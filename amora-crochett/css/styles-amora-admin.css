@@ -1,0 +1,272 @@
+/* ========================================================= */
+/* === ESTILOS BASE DEL PANEL ADMIN ======================== */
+/* ========================================================= */
+/*
+   Propósito:
+   - Define la identidad visual base del panel administrativo Amora
+   - Establece tipografía institucional, fondo general y layout raíz
+   - Sirve como ancla visual consistente para todo el admin
+
+   Impacto funcional:
+   - Controla el layout vertical completo (flex column)
+   - Previene scroll no deseado en desktop (controlado más adelante por media queries)
+   - Unifica colores y sensaciones visuales del panel
+
+   Reglas críticas:
+   - NO cambiar fuentes
+   - NO cambiar colores
+   - NO modificar display / flex
+   - Cualquier cambio aquí afecta TODO el panel
+*/
+
+/* Layout y tipografía base */
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #fdfbf9;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Tipografía secundaria (títulos, énfasis editoriales) */
+.font-serif {
+  font-family: "Crimson Pro", serif;
+}
+
+/* Tarjetas con efecto glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 132, 152, 0.1);
+}
+
+/* Botón principal institucional */
+.btn-primary {
+  background-color: #d48498;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #5d4037;
+  transform: translateY(-2px);
+}
+
+/* Inputs personalizados del admin */
+.input-amora {
+  border: 1px solid #e9e4d0;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.3s;
+  background: white;
+  color: #333333;
+}
+
+.input-amora:focus {
+  outline: none;
+  border-color: #d48498;
+  ring: 1px solid #d48498;
+}
+
+/* ========================================================= */
+/* === CONTROL DE SCROLL Y BLOQUEO POR DISPOSITIVO ========= */
+/* ========================================================= */
+/*
+      Propósito:
+      - Gestiona el comportamiento del scroll del panel administrativo
+      - Diferencia claramente la experiencia Desktop vs Mobile/Tablet
+
+      Desktop (>= 1024px):
+      - Bloquea el scroll del <body>
+      - Fuerza el scroll únicamente dentro del contenedor principal
+      - Mantiene header y layout estables
+
+      Mobile / Tablet (<= 1023px):
+      - Restaura el scroll natural del <body>
+      - Evita recortes de contenido
+      - Previene overflow oculto accidental
+
+      Problemas que soluciona:
+      - Doble scrollbar
+      - Contenido inaccesible en pantallas pequeñas
+      - Saltos de layout al cambiar de dispositivo
+
+      Advertencia:
+      - NO cambiar breakpoints
+      - NO mover overflow fuera de estos media queries
+    */
+
+/* Desktop: scroll interno controlado */
+@media (min-width: 1024px) {
+  .scroll-container {
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  body {
+    overflow: hidden;
+  }
+}
+
+/* Mobile / Tablet: scroll natural del documento */
+@media (max-width: 1023px) {
+  body {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+
+  .scroll-container {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  main {
+    overflow: visible !important;
+  }
+}
+
+/* ========================================================= */
+/* === AJUSTE DE ESPACIO PARA LISTADOS DINÁMICOS =========== */
+/* ========================================================= */
+/*
+   Propósito:
+   - Garantiza espacio visual de seguridad al final del listado de artículos
+   - Evita que el último elemento quede cortado o incómodo al hacer scroll
+
+   Contexto:
+   - El contenedor #lista-articulos suele crecer dinámicamente
+   - En scroll interno (desktop) el último item puede quedar demasiado abajo
+
+   Impacto:
+   - Mejora la experiencia visual
+   - No altera layout ni estilos visibles
+   - No interfiere con responsive
+
+   Regla:
+   - Este padding NO debe eliminarse
+   - Ajustar solo si cambia la altura del header
+*/
+
+#lista-articulos {
+  padding-bottom: 20px;
+}
+
+/* ========================================================= */
+/* === SISTEMA DE NOTIFICACIONES (TOAST) =================== */
+/* ========================================================= */
+/*
+   Propósito:
+   - Mostrar mensajes temporales de estado al administrador
+   - Proveer feedback inmediato para acciones críticas (guardar, borrar, error)
+
+   Comportamiento:
+   - Posicionado fijo en la parte inferior central
+   - Se muestra / oculta dinámicamente desde JavaScript
+   - Usa animación suave para entrada visual
+
+   Consideraciones UX:
+   - Alta visibilidad sin bloquear la interfaz
+   - No interfiere con el flujo de trabajo
+   - Z-index elevado para garantizar prioridad visual
+
+   Advertencias:
+   - NO cambiar position ni z-index
+   - NO eliminar animation
+*/
+
+/* Contenedor principal del toast */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 50px;
+  color: white;
+  font-weight: bold;
+  z-index: 9999;
+  display: none;
+  animation: slideUp 0.3s ease;
+}
+
+/* Animación de entrada del toast */
+@keyframes slideUp {
+  from {
+    bottom: -50px;
+    opacity: 0;
+  }
+  to {
+    bottom: 20px;
+    opacity: 1;
+  }
+}
+
+/* ========================================================= */
+/* === OVERRIDES DE TEXTO Y BOTONES ADMIN ================== */
+/* ========================================================= */
+/*
+   Propósito:
+   - Asegurar contraste y legibilidad en etiquetas y textos auxiliares
+   - Definir botones secundarios usados en acciones administrativas
+   - Mantener coherencia visual en flujos de edición y navegación
+
+   Contexto:
+   - Estos estilos complementan Tailwind
+   - Corrigen casos donde las utilidades no cubren el diseño deseado
+
+   Impacto UX:
+   - Mejora claridad en formularios
+   - Refuerza affordance de acciones (editar / eliminar)
+
+   Advertencias:
+   - Cambios aquí afectan acciones críticas
+   - NO intercambiar colores entre botones
+*/
+
+/* Corrección de color para textos y etiquetas */
+label,
+.text-obs {
+  color: #333333 !important;
+}
+
+/* Botón de navegación secundaria */
+.btn-nav-fugo {
+  background-color: #f3f4f6;
+  color: #333333;
+  transition: all 0.3s;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+.btn-nav-fugo:hover {
+  background-color: #d48498;
+  color: white;
+}
+
+/* Botón editar */
+.btn-editar {
+  background-color: #eff6ff;
+  color: #3b82f6;
+  transition: all 0.2s;
+}
+
+.btn-editar:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+  background-color: #fef2f2;
+  color: #ef4444;
+  transition: all 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: #ef4444;
+  color: white;
+}

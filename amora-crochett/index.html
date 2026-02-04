@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amora Crochett | Tejido Artesanal</title>
+    <meta
+      name="description"
+      content="Descubre el Museo de Amora: Piezas únicas tejidas a mano con la técnica de crochet. Arte artesanal hecho con amor."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <div class="header-bg"></div>
+
+    <div class="main-container">
+      <div class="profile-card text-center">
+        <div class="logo-container">
+          <img
+            src="public/logo.png"
+            class="w-full h-full object-contain"
+            alt="Amora Logo"
+          />
+        </div>
+
+        <div id="view-index">
+          <h1 class="text-3xl font-bold text-[#5D4037] mb-1">Amora Crochett</h1>
+          <p class="fecha-actual text-[#8B735B] font-semibold text-sm">
+            Cargando fecha...
+          </p>
+
+          <div class="label-seccion">PERFIL</div>
+          <p class="text-[#8B735B] text-xs italic mt-4 px-4 leading-relaxed">
+            "Descubre el Museo de Amora: Piezas únicas tejidas a mano con la
+            técnica de crochet"
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 mt-8 px-2">
+            <div
+              onclick="openModal('modalCrochet')"
+              class="icon-frame-etiqueta"
+            >
+              <div class="icon-content-unit">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8v8M8 12h8" />
+                </svg>
+                <span
+                  class="text-[8px] font-bold text-[#8B735B] mt-2 tracking-widest uppercase"
+                  >Crochet</span
+                >
+              </div>
+            </div>
+            <div
+              onclick="openModal('modalContacto')"
+              class="icon-frame-etiqueta"
+            >
+              <div class="icon-content-unit">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                  />
+                </svg>
+                <span
+                  class="text-[8px] font-bold text-[#8B735B] mt-2 tracking-widest uppercase"
+                  >Contacto</span
+                >
+              </div>
+            </div>
+            <div
+              onclick="openModal('modalLogistica')"
+              class="icon-frame-etiqueta"
+            >
+              <div class="icon-content-unit">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="1" y="3" width="15" height="13" />
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                  <circle cx="5.5" cy="18.5" r="2.5" />
+                  <circle cx="18.5" cy="18.5" r="2.5" />
+                </svg>
+                <span
+                  class="text-[8px] font-bold text-[#8B735B] mt-2 tracking-widest uppercase"
+                  >Logística</span
+                >
+              </div>
+            </div>
+            <div
+              onclick="openModal('modalPedidos')"
+              class="icon-frame-etiqueta"
+            >
+              <div class="icon-content-unit">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                  <path d="M2 2l7.5 1.5" />
+                  <path d="M7 11l5-5" />
+                </svg>
+                <span
+                  class="text-[8px] font-bold text-[#8B735B] mt-2 tracking-widest uppercase"
+                  >Pedidos Especiales</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 px-4">
+            <div
+              class="bg-[#F5F1E6] p-6 rounded-[30px] border-2 border-dashed border-[#D48498]/30"
+            >
+              <h3
+                class="font-bold text-[#5D4037] text-sm uppercase mb-2 text-center"
+              >
+                ✨ Entérate de nuevas piezas
+              </h3>
+              <p class="text-[10px] text-[#8B735B] mb-4 italic text-center">
+                Sé la primera en conocer mis próximas creaciones.
+              </p>
+              <form id="subscribeForm" class="space-y-3">
+                <input
+                  type="email"
+                  id="subEmail"
+                  placeholder="Tu correo electrónico"
+                  required
+                  class="w-full px-4 py-3 rounded-2xl text-xs border-none focus:ring-2 focus:ring-[#D48498] outline-none shadow-sm"
+                />
+                <button
+                  type="submit"
+                  class="w-full bg-[#D48498] text-white text-[10px] font-bold py-3 rounded-2xl shadow-md hover:bg-[#5D4037] transition-all uppercase tracking-widest"
+                >
+                  Suscribirme
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="view-tienda" style="display: none">
+          <h1 class="text-3xl font-bold text-[#5D4037] mb-1">Museo & Tienda</h1>
+          <p class="fecha-actual text-[#8B735B] font-semibold text-sm">
+            Cargando fecha...
+          </p>
+          <div class="label-seccion">GALERÍA</div>
+
+          <div class="filter-container mt-4 mb-6 px-2">
+            <button onclick="filtrarTienda('Todos')" class="filter-btn">
+              Todos
+            </button>
+            <button onclick="filtrarTienda('Animalitos')" class="filter-btn">
+              Animalitos 🐾
+            </button>
+            <button onclick="filtrarTienda('Naturaleza')" class="filter-btn">
+              Naturaleza 🌿
+            </button>
+            <button onclick="filtrarTienda('Personajes')" class="filter-btn">
+              Personajes 🎭
+            </button>
+            <button onclick="filtrarTienda('Llaveros')" class="filter-btn">
+              Llaveros 🔑
+            </button>
+            <button onclick="filtrarTienda('Misceláneos')" class="filter-btn">
+              Misceláneos ✨
+            </button>
+          </div>
+
+          <div id="grid-productos" class="flex flex-col gap-4"></div>
+        </div>
+
+        <div id="view-destacados" style="display: none">
+          <h1 class="text-3xl font-bold text-[#5D4037] mb-1">
+            Los mas Notables
+          </h1>
+          <p class="fecha-actual text-[#8B735B] font-semibold text-sm">
+            Cargando fecha...
+          </p>
+          <div class="label-seccion">DESTACADOS</div>
+          <div
+            id="contenedor-destacados-dinamico"
+            class="mt-8 px-2 flex flex-col items-center gap-12"
+          ></div>
+        </div>
+
+        <div id="view-museo" style="display: none">
+          <h1 class="text-3xl font-bold text-[#5D4037] mb-1">Amora Crochett</h1>
+          <p class="fecha-actual text-[#8B735B] font-semibold text-sm">
+            Cargando fecha...
+          </p>
+          <div class="label-seccion">LA HISTORIA</div>
+
+          <div class="filter-container mt-4 mb-6 px-2">
+            <button onclick="filtrarMuseo('Todos')" class="filter-btn">
+              Todos
+            </button>
+            <button onclick="filtrarMuseo('Animalitos')" class="filter-btn">
+              Animalitos 🐾
+            </button>
+            <button onclick="filtrarMuseo('Naturaleza')" class="filter-btn">
+              Naturaleza 🌿
+            </button>
+            <button onclick="filtrarMuseo('Personajes')" class="filter-btn">
+              Personajes 🎭
+            </button>
+            <button onclick="filtrarMuseo('Llaveros')" class="filter-btn">
+              Llaveros 🔑
+            </button>
+            <button onclick="filtrarMuseo('Misceláneos')" class="filter-btn">
+              Misceláneos ✨
+            </button>
+          </div>
+
+          <div id="grid-museo" class="flex flex-col gap-4 mt-6"></div>
+
+          <div class="separador-amora px-4">
+            <span class="separador-emoji">🧶</span>
+          </div>
+
+          <div class="label-seccion">VOCES DE AMORA</div>
+          <p class="text-[10px] text-[#8B735B] mb-8 italic">
+            Lo que dicen quienes ya tienen una pieza en casa.
+          </p>
+          <div
+            id="lista-resenas-publicas"
+            class="space-y-6 text-left px-4"
+          ></div>
+
+          <div
+            class="mt-12 bg-[#F5F1E6] p-6 rounded-[35px] border-2 border-dashed border-[#D48498]/30"
+          >
+            <h3 class="font-bold text-[#5D4037] text-xs uppercase mb-4">
+              ✨ Cuéntanos tu experiencia
+            </h3>
+            <form id="resenaForm" class="space-y-4">
+              <input
+                type="text"
+                id="resNombre"
+                placeholder="Tu nombre"
+                required
+                class="w-full px-4 py-3 rounded-xl text-xs border-none outline-none shadow-sm"
+              />
+              <div class="flex flex-col items-center gap-2">
+                <span
+                  class="text-[10px] text-[#8B735B] uppercase font-bold tracking-widest"
+                  >Calificación</span
+                >
+                <select
+                  id="resEstrellas"
+                  class="bg-white px-4 py-2 rounded-xl text-xs border-none shadow-sm text-[#8B735B] font-bold"
+                >
+                  <option value="5">⭐⭐⭐⭐⭐ (Excelente)</option>
+                  <option value="4">⭐⭐⭐⭐ (Muy bueno)</option>
+                  <option value="3">⭐⭐⭐ (Bueno)</option>
+                  <option value="2">⭐⭐ (Regular)</option>
+                  <option value="1">⭐ (Malo)</option>
+                </select>
+              </div>
+              <textarea
+                id="resComentario"
+                placeholder="Escribe tu reseña aquí..."
+                required
+                rows="3"
+                class="w-full px-4 py-3 rounded-xl text-xs border-none outline-none shadow-sm"
+              ></textarea>
+              <button
+                type="submit"
+                id="btnEnviarResena"
+                class="w-full bg-[#D48498] text-white text-[10px] font-bold py-3 rounded-2xl shadow-md hover:bg-[#5D4037] transition-all uppercase tracking-widest"
+              >
+                Enviar Comentario
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-12 pt-6 border-t border-dashed border-[#8B735B]/30">
+          <a
+            href="http://catalogo-pantoja.vercel.app/"
+            target="_blank"
+            class="block hover:opacity-70 transition-opacity"
+          >
+            <p
+              class="text-[9px] font-bold text-[#8B735B] tracking-[0.2em] uppercase"
+            >
+              Powered by Pantoja ® 2026
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav-inferior">
+      <div onclick="changeTab('index')" id="nav-index" class="nav-item active">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span>Perfil</span>
+      </div>
+      <div onclick="changeTab('tienda')" id="nav-tienda" class="nav-item">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+          <path d="M3 6h18" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        <span>Tienda</span>
+      </div>
+      <div
+        onclick="changeTab('destacados')"
+        id="nav-destacados"
+        class="nav-item"
+      >
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          />
+        </svg>
+        <span>Destacados</span>
+      </div>
+      <div onclick="changeTab('museo')" id="nav-museo" class="nav-item">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          <path d="M2 9h20"></path>
+          <path d="M5 9V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"></path>
+        </svg>
+        <span>Museo</span>
+      </div>
+    </nav>
+
+    <div id="modalCrochet" class="modal">
+      <div class="modal-content text-left">
+        <span class="close-modal" onclick="closeModal('modalCrochet')"
+          >&times;</span
+        >
+        <h2 class="text-2xl font-bold text-[#5D4037] mb-4 text-center">
+          Arte y Dedicación
+        </h2>
+        <p class="text-[#8B735B] text-sm leading-relaxed mb-4">
+          El crochet es la capacidad de transformar un simple hilo en una pieza
+          con alma. En Amora Crochett, cada punto es una decisión consciente de
+          diseño, fusionando la tradición milenaria con una estética moderna y
+          profesional.
+        </p>
+        <ul class="text-xs text-[#5D4037] space-y-2 font-semibold">
+          <li>
+            ✨ Técnica Amigurumi: Arte japonés especializado en dar vida a
+            personajes con estructuras firmes y acabados impecables.
+          </li>
+          <li>
+            🧶 Materiales Premium: Utilizamos hilazas de algodón 100%
+            mercerizado para mayor durabilidad y suavidad.
+          </li>
+          <li>
+            💖 Trabajo Profesional: Cada pieza requiere de 10 a 30 horas de
+            labor manual.
+          </li>
+          <li>
+            🎨 Detalle Artesanal: Rellenos hipoalergénicos y personalidad única.
+          </li>
+          <li>
+            🛡️ Seguridad: Ojos de seguridad con broche interno para mayor
+            protección en piezas infantiles.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="modalContacto" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('modalContacto')"
+          >&times;</span
+        >
+        <h2 class="text-2xl font-bold text-[#5D4037] mb-6 text-center">
+          Conecta con Amora
+        </h2>
+        <div class="grid grid-cols-1 gap-3">
+          <a
+            href="tel:3313575180"
+            class="flex items-center justify-center gap-3 bg-white border-2 border-[#8B735B] text-[#8B735B] p-3 rounded-2xl font-bold hover:bg-[#8B735B] hover:text-white transition-all"
+            >📞 Llamada</a
+          >
+          <a
+            href="mailto:anarru1977@gmail.com"
+            class="flex items-center justify-center gap-3 bg-[#F9F5F0] border-2 border-[#D7CCC8] text-[#5D4037] p-3 rounded-2xl font-bold"
+            >💌 Correo Electrónico</a
+          >
+          <a
+            href="https://wa.me/523313575180"
+            target="_blank"
+            class="flex items-center justify-center gap-3 bg-[#25D366] text-white p-3 rounded-2xl font-bold shadow-md"
+            >💬 WhatsApp</a
+          >
+          <a
+            href="https://instagram.com/amora_crochett"
+            target="_blank"
+            class="flex items-center justify-center gap-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white p-3 rounded-2xl font-bold shadow-md"
+            >📸 Instagram</a
+          >
+          <a
+            href="https://www.facebook.com/share/1BiESEvVVH/"
+            target="_blank"
+            class="flex items-center justify-center gap-3 bg-[#1877F2] text-white p-3 rounded-2xl font-bold shadow-md"
+            >📘 Facebook</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div id="modalLogistica" class="modal">
+      <div class="modal-content text-left">
+        <span class="close-modal" onclick="closeModal('modalLogistica')"
+          >&times;</span
+        >
+        <h2 class="text-2xl font-bold text-[#5D4037] mb-4 text-center">
+          Envíos y Pagos
+        </h2>
+        <div class="space-y-4 text-[11px] text-[#8B735B]">
+          <div class="bg-[#F5F1E6] p-4 rounded-2xl border-l-4 border-[#8B735B]">
+            <p class="font-bold text-[#5D4037] text-xs">🚚 Envíos y Entregas</p>
+            <p>
+              • Envíos a toda la República Mexicana por paquetería express
+              (FedEx/DHL/Estafeta) con cargo al cliente.
+            </p>
+            <p>
+              • Entregas personales en Guadalajara (Puntos medios a convenir
+              previa cita).
+            </p>
+          </div>
+          <div class="bg-[#F5F1E6] p-4 rounded-2xl border-l-4 border-[#8B735B]">
+            <p class="font-bold text-[#5D4037] text-xs">💳 Métodos de Pago</p>
+            <p>• Transferencias Interbancarias (SPEI).</p>
+            <p>• Depósitos directos en OXXO / Ventanilla bancaria.</p>
+            <p>• Pago en efectivo contra entrega (Solo entregas personales).</p>
+          </div>
+          <div class="bg-[#F5F1E6] p-4 rounded-2xl border-l-4 border-[#8B735B]">
+            <p class="font-bold text-[#5D4037] text-xs">📦 Empaque Especial</p>
+            <p>
+              Todas nuestras piezas se entregan listas para regalo, con toques
+              de decoracion y tarjeta de cuidados de la prenda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modalPedidos" class="modal">
+      <div class="modal-content text-left">
+        <span class="close-modal" onclick="closeModal('modalPedidos')"
+          >&times;</span
+        >
+        <h2 class="text-2xl font-bold text-[#5D4037] mb-4 text-center">
+          Solicitudes Especiales
+        </h2>
+        <div class="space-y-4 text-[11px] text-[#8B735B]">
+          <div class="bg-[#F5F1E6] p-4 rounded-2xl border-l-4 border-[#8B735B]">
+            <p class="font-bold text-[#5D4037] text-xs">🎨 Proceso Creativo</p>
+            <p>1. Envíanos tu idea o imagen de referencia por WhatsApp.</p>
+            <p>2. Cotizamos tu pieza según tamaño y complejidad.</p>
+            <p>3. Se requiere el 50% de anticipo para iniciar el proyecto.</p>
+          </div>
+          <div class="bg-[#F5F1E6] p-4 rounded-2xl border-l-4 border-[#8B735B]">
+            <p class="font-bold text-[#5D4037] text-xs">
+              📅 Tiempo de Elaboración
+            </p>
+            <p>
+              El tiempo estimado es de 3 a 15 días hábiles, dependiendo de la
+              lista de espera y la complejidad de la pieza.
+            </p>
+          </div>
+          <div class="bg-[#F5F1E6] p-4 rounded-2xl border-l-4 border-[#8B735B]">
+            <p class="font-bold text-[#5D4037] text-xs">✅ Garantía Amora</p>
+            <p>
+              Te enviamos fotos del proceso y del resultado final antes del
+              envío para asegurar que sea exactamente lo que soñaste.
+            </p>
+          </div>
+          <a
+            href="https://wa.me/523313575180?text=Hola%20Amora%20✨%20Me%20gustaría%20cotizar%20una%20pieza%20especial"
+            target="_blank"
+            class="w-full block bg-[#D48498] text-white text-center py-4 rounded-2xl font-bold mt-6 uppercase text-[10px] tracking-widest shadow-md"
+            >Solicitar por WhatsApp ✨</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div id="modalDetalles" class="modal">
+      <div class="modal-content text-left relative">
+        <span class="close-modal" onclick="closeModal('modalDetalles')"
+          >&times;</span
+        >
+        <h2
+          id="detNombre"
+          class="text-3xl font-bold mb-4 text-center text-[#5D4037]"
+        ></h2>
+        <div class="text-center mb-2">
+          <span
+            class="text-[9px] bg-[#8B735B]/10 text-[#8B735B] px-3 py-1 rounded-full font-bold uppercase tracking-widest"
+            >✨ Desliza para ver más • Clic para ampliar</span
+          >
+        </div>
+        <div
+          id="galeriaContenedor"
+          class="flex overflow-x-auto gap-4 py-2 mb-6 snap-x snap-mandatory no-scrollbar scroll-smooth"
+        ></div>
+        <div class="det-info-box">
+          <div class="text-[17px] text-[#5D4037] space-y-3">
+            <p>
+              <b>Categoría:</b>
+              <span id="detCategoria" class="text-red-700 font-bold"></span>
+            </p>
+            <p><b>Descripción:</b> <span id="detDescripcion"></span></p>
+            <p><b>Medida:</b> <span id="detMedida"></span></p>
+            <div
+              id="contenedor-precio-detalle"
+              class="flex flex-col gap-1 mt-4"
+            >
+              <p
+                id="detPrecioOriginal"
+                class="text-sm text-gray-400 line-through hidden"
+              ></p>
+              <p id="detPrecio" class="text-2xl font-bold text-[#5D4037]"></p>
+            </div>
+          </div>
+        </div>
+        <a
+          id="btnAdquirir"
+          href="#"
+          target="_blank"
+          class="block bg-[#8B735B] text-white text-center py-5 rounded-2xl font-bold mt-6 uppercase text-base shadow-lg"
+          >ADQUIRIR PIEZA</a
+        >
+      </div>
+    </div>
+
+    <div
+      id="modalImagen"
+      class="modal"
+      onclick="closeModal('modalImagen')"
+      style="z-index: 2000"
+    >
+      <div class="flex items-center justify-center h-full p-4">
+        <img
+          id="imgExpandida"
+          src=""
+          class="max-w-full max-h-[90vh] rounded-3xl border-4 border-white shadow-2xl object-contain"
+        />
+      </div>
+    </div>
+
+    <div id="toast">
+      <span class="text-xl">✨</span>
+      <span id="toast-text"></span>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

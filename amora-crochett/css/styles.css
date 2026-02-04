@@ -1,0 +1,707 @@
+:root {
+  --color-chocolate: #8b735b;
+  --color-cuerpo: #e6e2d3;
+  --color-card: #fdfbf7;
+  --color-texto: #5d4037;
+  --color-cafe-tenue: #f5f1e6;
+  --color-beige-top: #f2efe9;
+  --color-cafe-bottom: #e9e4d9;
+  --color-borde-destacado: #705a4f;
+}
+
+/* GLOBALES */
+html,
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: var(--color-cuerpo);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* LAYOUT PRINCIPAL */
+.header-bg {
+  background-color: var(--color-chocolate);
+  height: 140px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .header-bg {
+    height: 48vh;
+  }
+}
+
+.main-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    padding-top: 32vh;
+  }
+}
+
+.profile-card {
+  background-color: var(--color-card);
+  width: 92%;
+  max-width: 520px;
+  border-radius: 50px;
+  padding: 110px 25px 40px 25px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.logo-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  height: 170px;
+}
+
+@media (min-width: 768px) {
+  .logo-container {
+    width: 240px;
+    height: 240px;
+  }
+  .profile-card {
+    padding-top: 140px;
+  }
+}
+
+/* PERFIL: MARCOS Y UNIDADES */
+.icon-frame-etiqueta {
+  background-color: var(--color-cafe-tenue);
+  border: 1px solid rgba(139, 115, 91, 0.3);
+  border-radius: 18px;
+  padding: 15px 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  transition: none;
+}
+
+.icon-content-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.icon-frame-etiqueta:hover .icon-content-unit {
+  transform: scale(1.15);
+}
+
+.icon-content-unit svg {
+  stroke: var(--color-chocolate);
+  width: 32px;
+  height: 32px;
+}
+
+/* ETIQUETAS DE SECCIÓN */
+.label-seccion {
+  background-color: var(--color-cafe-tenue);
+  color: var(--color-texto);
+  font-weight: 800;
+  padding: 12px 60px;
+  border-radius: 18px;
+  display: inline-block;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* BOTÓN DE ACCIÓN */
+.btn-perfil-action {
+  background-color: var(--color-cafe-tenue);
+  color: var(--color-texto);
+  font-weight: 800;
+  padding: 12px 60px;
+  border-radius: 18px;
+  display: inline-block;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-perfil-action:hover {
+  transform: scale(1.05);
+  background-color: var(--color-cafe-bottom);
+}
+
+.ver-mas-btn {
+  color: #705a4f;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 4px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* NAV INFERIOR */
+.nav-inferior {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(230, 226, 211, 0.9);
+  backdrop-filter: blur(12px);
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid rgba(139, 115, 91, 0.2);
+  z-index: 100;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav-item:hover {
+  transform: scale(1.1);
+}
+.nav-item svg {
+  stroke: var(--color-chocolate);
+  stroke-width: 2;
+  width: 28px;
+  height: 28px;
+}
+.nav-item span {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--color-texto);
+  text-transform: uppercase;
+}
+.nav-item.active {
+  border-bottom: 3px solid var(--color-chocolate);
+  transform: none !important;
+}
+
+/* FILTROS */
+.filter-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.filter-btn {
+  background-color: var(--color-cafe-tenue);
+  color: var(--color-texto);
+  border: 1px solid rgba(139, 115, 91, 0.2);
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active {
+  background-color: var(--color-chocolate);
+  color: white;
+}
+
+/* MODALES */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
+}
+.modal-content {
+  background-color: var(--color-card);
+  margin: 5% auto;
+  padding: 35px;
+  border-radius: 40px;
+  width: 85%;
+  max-width: 450px;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--color-texto);
+}
+
+/* PRODUCT CARDS */
+.item-card {
+  display: flex;
+  height: 190px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.info-top {
+  background-color: var(--color-beige-top);
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 10px 8px 25px;
+}
+.info-bottom {
+  background-color: var(--color-cafe-bottom);
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 0 25px;
+}
+.card-image-side {
+  width: 45%;
+  background-color: white;
+}
+.card-image-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Reducimos el padding de 10px a 6px para que suba un poco y no tape el texto */
+.ribbon {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  padding: 6px 12px; /* Reducido para que sea menos alto */
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 0 0 10px 10px;
+  z-index: 20;
+  text-transform: uppercase;
+}
+.nombre-pieza {
+  color: var(--color-chocolate);
+  font-weight: 800;
+  font-size: clamp(15px, 4.5vw, 19px); /* Se ajusta solo en móviles */
+  text-align: left;
+  line-height: 1.1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Máximo 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.precio-tag {
+  background-color: var(--color-chocolate);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-weight: 800;
+  width: fit-content;
+  margin-top: 4px;
+}
+.det-info-box {
+  background-color: #f5f1e6;
+  padding: 25px;
+  border-radius: 30px;
+  border-left: 6px solid var(--color-chocolate);
+}
+
+/* SECCIÓN DESTACADOS */
+.card-destacado-layer {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  background-color: var(--color-cafe-bottom);
+  border: 3px solid var(--color-borde-destacado);
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-fondo-promo {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  z-index: 1;
+  border-radius: 5px;
+}
+.img-marco-promo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.promo-texto-frame {
+  background-color: var(--color-chocolate);
+  width: 90%;
+  margin-top: 24px;
+  padding: 15px 20px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- NUEVOS ESTILOS DE FILTROS Y ANIMACIÓN --- */
+
+/* Contenedor de filtros: 2 columnas en móvil vertical, fila en PC/Horizontal */
+.filter-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+@media (min-width: 600px) or (orientation: landscape) {
+  .filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+/* Botón en estado normal */
+.filter-btn {
+  background-color: var(--color-cafe-tenue);
+  color: var(--color-texto);
+  border: 1px solid rgba(139, 115, 91, 0.2);
+  padding: 10px 8px;
+  border-radius: 15px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Propuesta de estado ACTIVO (Seleccionado) */
+.filter-btn.active {
+  background-color: var(--color-chocolate) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(139, 115, 91, 0.3);
+  transform: translateY(-2px);
+  border-color: var(--color-chocolate);
+}
+
+/* Animación de entrada para las tarjetas de productos */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-item {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* --- TOAST NOTIFICACIÓN --- */
+#toast {
+  position: fixed;
+  bottom: 110px; /* Arriba del nav-inferior */
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  z-index: 9999;
+
+  background-color: #5d4037; /* Café oscuro de tu marca */
+  color: #f5f1e6;
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: 2px solid #d48498; /* Rosa de tus detalles */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+
+  /* Estado inicial */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Clase para mostrar */
+#toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+/* --- ESTILOS PARA EL CÍRCULO DE OFERTA (ARQUITECTURA AMORA) --- */
+
+/* Contenedor relativo para la imagen para que el círculo sepa dónde posicionarse */
+.img-container-oferta {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* El "Badge" o Círculo que muerde la imagen */
+.oferta-badge {
+  position: absolute;
+  /* Posición: Esquina superior derecha "mordiendo" el borde */
+  top: -15px;
+  right: -15px;
+  z-index: 50;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  pointer-events: none; /* Para que no estorbe si el usuario hace clic en la foto */
+  transition: transform 0.3s ease;
+}
+
+/* Tamaño para PC y Celular Horizontal */
+.oferta-badge svg {
+  width: 75px;
+  height: 75px;
+}
+
+/* Animación de latido sutil para captar la atención */
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-oferta {
+  animation: heartBeat 3s infinite ease-in-out;
+}
+
+/* Ajuste para Celular Vertical (Pantallas pequeñas) */
+@media (max-width: 640px) {
+  .oferta-badge {
+    top: -10px;
+    right: -10px;
+  }
+  .oferta-badge svg {
+    /* Un poco más pequeño en móvil para no tapar tanto */
+    width: 65px;
+    height: 65px;
+  }
+}
+
+/* --- MEJORAS DE INTERACCIÓN Y ESTÉTICA --- */
+
+/* 1. Animación de entrada más orgánica para las tarjetas */
+@keyframes floatingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-item {
+  animation: floatingFadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
+/* 2. Efecto de elevación al pasar el mouse sobre productos */
+.item-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 3. Estilización de la barra de scroll de la galería (para que no se vea fea) */
+.no-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-chocolate);
+  border-radius: 10px;
+}
+
+/* 4. Botón de adquirir con efecto de presión */
+#btnAdquirir {
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0px #5d4037 !important; /* Sombra sólida tipo botón físico */
+}
+
+#btnAdquirir:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0px #5d4037 !important;
+}
+
+/* 5. Firma más elegante y discreta */
+.signature-line p {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.signature-line p:hover {
+  opacity: 1;
+}
+
+/* --- MEJORAS DE INTERACCIÓN Y ESTÉTICA AMORA --- */
+
+/* 1. Animación de entrada más orgánica (Cubic Bezier) */
+@keyframes floatingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-item {
+  animation: floatingFadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
+/* 2. Feedback de elevación en tarjetas */
+.item-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 3. Botón 'Adquirir' con efecto de presión real */
+#btnAdquirir {
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0px #5d4037 !important; /* Sombra sólida que simula profundidad */
+}
+
+#btnAdquirir:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0px #5d4037 !important;
+}
+
+/* 4. Scrollbar de galería estilizada para móviles */
+.no-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: #8b735b;
+  border-radius: 10px;
+}
+
+/* --- SEPARADOR CON EMOJI ARTESANAL --- */
+.separador-amora {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 50px 0; /* Aumentamos a 50px para dar más aire y evitar que se vea doble */
+  width: 100%;
+}
+
+.separador-amora::before,
+.separador-amora::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px dotted #8b735b;
+  opacity: 0.3;
+}
+
+.separador-emoji {
+  margin: 0 15px;
+  font-size: 24px; /* Tamaño ideal del ovillo */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  user-select: none;
+}
+
+/* --- INDICADORES DE GALERÍA (DOTS) --- */
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d7ccc8;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--color-chocolate);
+  transform: scale(1.3);
+}
+
+/* -- Ajuste Personalizado para Boton de Examinar de subir Imagenes --*/
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Evita que el navbar tape el título de la sección */
+}
+
+/* Ajuste para que el input de archivos no rompa el layout en móviles muy pequeños */
+#fotos {
+  max-width: 100%;
+}
