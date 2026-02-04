@@ -1,25 +1,31 @@
 # Amora-Crochett
-Cloud-based application demonstrating AWS backend architecture.
 
-Amora is a cloud-based application created to demonstrate practical AWS backend architecture, cloud integration, and secure data handling.
+Amora is a web-based application focused on practical software development, business logic, and cloud deployment using modern web technologies.
 
-This project focuses on real-world infrastructure patterns rather than UI polish.
+This project was created to demonstrate real-world application development, integration, and deployment practices.
 
-## Architecture Overview
-- Cloud Provider: AWS
-- Backend: AWS Lambda
-- Compute: EC2 (private instances)
-- Database: PostgreSQL (AWS)
-- Networking: VPC with private subnets and bastion access
-- Monitoring: CloudWatch
-- Infrastructure Pattern: Bastion host + IAM-based access
+## Tech Stack
+- Frontend: React
+- Backend: Node.js
+- Database: Firebase / Firestore
+- Hosting & Deployment: Vercel
+- Development Tools: Visual Studio Code, Git
 
 ## What This Project Demonstrates
-- Practical AWS usage (not theoretical)
-- Secure access to private resources
-- Backend-first architecture
-- Experience with EC2, Lambda, networking, and databases
-- Operational understanding of cloud environments
+- Full-stack application structure
+- API and backend logic development
+- Cloud-based deployment using managed platforms
+- Practical use of databases for real applications
+- Clean separation between frontend and backend responsibilities
+
+## Current Status
+This repository documents an active project that is being organized and prepared for technical review.
+The focus is on architecture, code structure, and development practices rather than certifications.
+
+## Notes
+Amora is not an AWS-based project.
+Its purpose is to demonstrate practical application development and cloud deployment using modern web platforms.
+
 
 ## Current Status
 This repository is in an initial documentation phase.
